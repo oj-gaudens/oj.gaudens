@@ -1,0 +1,73 @@
+
+body {
+    margin: 0;
+    font-family: 'Courier New', monospace;
+    background-color: #0a0a0a;
+    color: #e0e0e0;
+    overflow-x: hidden;
+}
+header, footer {
+    padding: 20px;
+    text-align: center;
+    background-color: #111;
+}
+button {
+    background-color: #1a1a1a;
+    color: #ff4081;
+    border: 1px solid #ff4081;
+    padding: 10px 20px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+button:hover {
+    background-color: #ff4081;
+    color: #0a0a0a;
+}
+.card {
+    background-color: #111;
+    border: 1px solid #333;
+    padding: 15px;
+    margin: 15px;
+    transition: transform 0.3s;
+}
+.card:hover {
+    transform: scale(1.05);
+}
+/* Effet glitch */
+.glitch {
+  position: relative;
+  color: #fff;
+  font-size: 2em;
+  font-weight: bold;
+}
+.glitch::before, .glitch::after {
+  content: attr(data-text);
+  position: absolute;
+  left: 0;
+}
+.glitch::before {
+  animation: glitchTop 1s infinite linear alternate-reverse;
+  clip: rect(0, 900px, 0, 0);
+  color: #ff0080;
+}
+.glitch::after {
+  animation: glitchBottom 1s infinite linear alternate-reverse;
+  clip: rect(0, 900px, 0, 0);
+  color: #00fff9;
+}
+@keyframes glitchTop {
+  0% {clip: rect(0, 900px, 0, 0); transform: translate(-2px, -2px);}
+  20% {clip: rect(2px, 900px, 10px, 0); transform: translate(2px, 2px);}
+  40% {clip: rect(5px, 900px, 15px, 0); transform: translate(-2px, 2px);}
+  60% {clip: rect(10px, 900px, 20px, 0); transform: translate(2px, -2px);}
+  80% {clip: rect(15px, 900px, 25px, 0); transform: translate(-2px, 0px);}
+  100% {clip: rect(20px, 900px, 30px, 0); transform: translate(0px, 2px);}
+}
+@keyframes glitchBottom {
+  0% {clip: rect(10px, 900px, 20px, 0); transform: translate(2px, 2px);}
+  20% {clip: rect(15px, 900px, 25px, 0); transform: translate(-2px, -2px);}
+  40% {clip: rect(20px, 900px, 30px, 0); transform: translate(2px, 0px);}
+  60% {clip: rect(25px, 900px, 35px, 0); transform: translate(-2px, 2px);}
+  80% {clip: rect(30px, 900px, 40px, 0); transform: translate(2px, -2px);}
+  100% {clip: rect(35px, 900px, 45px, 0); transform: translate(-2px, 0px);}
+}
