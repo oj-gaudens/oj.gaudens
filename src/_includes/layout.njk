@@ -22,12 +22,12 @@ button{ background:var(--accent); border:none; padding:8px 14px; border-radius:6
 <body>
 <nav>
 <a href="/">Accueil</a>
-<a href="/about/index.html">Qui je suis</a>
-<a href="/projects/index.html">Projets</a>
-<a href="/writeups/example-writeup/index.html">Write-ups</a>
-<a href="/experience/index.html">Parcours</a>
-<a href="/skills/index.html">Compétences</a>
-<a href="/contact/index.html">Contact</a>
+<a href="{{ '/about/' | url }}">Qui je suis</a>
+<a href="/projects/">Projets</a>
+<a href="/writeups/example-writeup/">Write-ups</a>
+<a href="/experience/">Parcours</a>
+<a href="/skills/">Compétences</a>
+<a href="/contact/">Contact</a>
 <button onclick="toggleTheme()">🌗 Thème</button>
 </nav>
 <div class="terminal" id="terminal"></div>
