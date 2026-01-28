@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="fr" data-theme="dark">
+<head>
+<meta charset="UTF-8" />
+<title>Parcours</title>
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&family=JetBrains+Mono&display=swap" rel="stylesheet">
+<style>
+:root { --bg:#0b0f17; --card:#111827; --text:#e6edf3; --accent:#38bdf8; }
+[data-theme="light"] { --bg:#fff; --card:#f3f4f6; --text:#0f172a; --accent:#2563eb; }
+body { margin:0; font-family:'Inter',sans-serif; background:var(--bg); color:var(--text); max-width:1000px; margin:auto; padding:2rem; line-height:1.7; }
+h1,h2,h3{ color:var(--accent); }
+nav{ display:flex; flex-wrap:wrap; gap:1rem; margin-bottom:2rem; align-items:center; }
+nav a{ text-decoration:none; color:var(--text); font-weight:600; }
+.card{ background:var(--card); padding:1.5rem; border-radius:12px; margin-bottom:1.5rem; }
+button{ background:var(--accent); border:none; padding:8px 14px; border-radius:6px; font-weight:bold; cursor:pointer; }
+.terminal{ font-family:'JetBrains Mono',monospace; background:black; color:#38bdf8; padding:1rem; border-radius:8px; margin-bottom:2rem; white-space:nowrap; border:1px solid #38bdf8;}
+.cursor{ display:inline-block; width:10px; background:#38bdf8; animation:blink 1s infinite; margin-left:5px;}
+@keyframes blink{0%,50%,100%{opacity:1;}25%,75%{opacity:0;}}
+</style>
+</head>
+<body>
+<nav>
+<a href="/">Accueil</a>
+<a href="/about/index.html">Qui je suis</a>
+<a href="/projects/index.html">Projets</a>
+<a href="/writeups/example-writeup/index.html">Write-ups</a>
+<a href="/experience/index.html">Parcours</a>
+<a href="/skills/index.html">Compétences</a>
+<a href="/contact/index.html">Contact</a>
+<button onclick="toggleTheme()">🌗 Thème</button>
+</nav>
+<div class="terminal" id="terminal"></div>
+<main><div class="card">Formation Bac Pro CIEL + projets cybersécurité personnels.</div>
+<h1>Expériences &amp; Parcours</h1>
+<h2>Formation</h2>
+<div class="card">Bac Pro CIEL – Saint‑Erembert</div>
+<h2>Stage</h2>
+<div class="card">Stage numérique – Ministère de l’Écologie (DNUM)
+- Virtualisation Proxmox
+- Configuration réseau
+- Supervision serveurs</div></main>
+<script>
+function toggleTheme(){const html=document.documentElement;html.dataset.theme=html.dataset.theme==="dark"?"light":"dark";}
+const text="oumar@cyberlab:~$ initializing portfolio... access granted.";
+let i=0;function typeEffect(){if(i<text.length){document.getElementById("terminal").innerHTML+=text.charAt(i);i++;setTimeout(typeEffect,30);}else{document.getElementById("terminal").innerHTML+='<span class="cursor"></span>';}}typeEffect();
+</script>
+</body>
+</html>
