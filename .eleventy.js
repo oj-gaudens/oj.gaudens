@@ -1,9 +1,11 @@
-module.exports = function (eleventyConfig) {
-  eleventyConfig.addPassthroughCopy("src/assets");
-  eleventyConfig.addWatchTarget("src/assets");
+module.exports = function(eleventyConfig) {
+  eleventyConfig.addPassthroughCopy("src/assets"); // CSS, JS, images
+
   return {
-    dir: { input: "src", includes: "_includes", output: "_site" },
-    markdownTemplateEngine: "njk",
-    htmlTemplateEngine: "njk"
+    dir: {
+      input: "src",          // dossier source
+      includes: "_includes", // dossiers pour layouts
+      output: "docs"
+    }
   };
 };
