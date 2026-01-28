@@ -2,7 +2,7 @@
 <html lang="fr" data-theme="dark">
 <head>
 <meta charset="UTF-8" />
-<title>Projets</title>
+<title>Parcours</title>
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&family=JetBrains+Mono&display=swap" rel="stylesheet">
 <style>
@@ -22,54 +22,24 @@ button{ background:var(--accent); border:none; padding:8px 14px; border-radius:6
 <body>
 <nav>
 <a href="/">Accueil</a>
-<a href="/about/">Qui je suis</a>
-<a href="/projects/">Projets</a>
-<a href="/writeups/">Write-ups</a>
-<a href="/experience/">Parcours</a>
-<a href="/skills/">Compétences</a>
-<a href="/contact/">Contact</a>
+<a href="/about/about.html">Qui je suis</a>
+<a href="/projects/projects.html">Projets</a>
+<a href="/writeups/example-writeup/index.html">Write-ups</a>
+<a href="/experience/experience.html">Parcours</a>
+<a href="/skills/skills.html">Compétences</a>
+<a href="/contact/contact.html">Contact</a>
 <button onclick="toggleTheme()">🌗 Thème</button>
 </nav>
 <div class="terminal" id="terminal"></div>
-<main><h1>Projets cyber / tech</h1>
-<p>Tous mes projets sont réalisés dans un cadre <strong>pédagogique, contrôlé et légal</strong>.<br>
-Le but n’est jamais de nuire, mais d’apprendre et de comprendre les mécanismes de sécurité.</p>
-<h2>🗜 Étude d’une zip bomb</h2>
-<div class="card">J’ai étudié le principe d’une zip bomb pour comprendre :
-- la surcharge de ressources
-- les risques pour les systèmes
-- l’importance des limites de décompression
-<p>Cela m’a permis de comprendre comment des fichiers peuvent provoquer un déni de service.</div></p>
-<h2>Étude des attaques par force brute (Hydra)</h2>
-<div class="card">J’ai utilisé Hydra en laboratoire pour comprendre :
-- le fonctionnement des attaques par force brute
-- l’importance des mots de passe robustes
-- le rôle des protections comme le verrouillage de compte
-</div>
-<h2>Analyse réseau (Wireshark)</h2>
-<div class="card">Wireshark m’a permis de :
-- voir les paquets réseau
-- comprendre TCP/IP
-- observer HTTP et DNS
-- visualiser concrètement les communicationsk</div>
-<h2>Sécurité web</h2>
-<div class="card">J’ai étudié :
-- XSS  
-- injections SQL  
-- NoSQL  
-<p>Pour comprendre :</p>
-<ul>
-<li>comment ces attaques fonctionnent</li>
-<li>quels dégâts elles peuvent causer</li>
-<li>comment les développeurs peuvent les empêcher</div></li>
-</ul>
-<h2>Scripts Python</h2>
-<div class="card">J’ai développé :
-- des scripts de chiffrement/déchiffrement  
-- des scripts pédagogiques simulant des attaques par force brute  
-- un scanner de ports TCP inspiré de Nmap  
-<p>Ces projets m’ont aidé à progresser en algorithmique et en logique.</div></p>
-</main>
+<main><div class="card">Formation Bac Pro CIEL + projets cybersécurité personnels.</div>
+<h1>Expériences &amp; Parcours</h1>
+<h2>Formation</h2>
+<div class="card">Bac Pro CIEL – Saint‑Erembert</div>
+<h2>Stage</h2>
+<div class="card">Stage numérique – Ministère de l’Écologie (DNUM)
+- Virtualisation Proxmox
+- Configuration réseau
+- Supervision serveurs</div></main>
 <script>
 function toggleTheme(){const html=document.documentElement;html.dataset.theme=html.dataset.theme==="dark"?"light":"dark";}
 const text="oumar@cyberlab:~$ initializing portfolio... access granted.";
