@@ -21,13 +21,13 @@ button{ background:var(--accent); border:none; padding:8px 14px; border-radius:6
 </head>
 <body>
 <nav>
-<a href="/">Accueil</a>
+<a href="{{ '/' | url }}">Accueil</a>
 <a href="{{ '/about/' | url }}">Qui je suis</a>
-<a href="/projects/">Projets</a>
-<a href="/writeups/example-writeup/">Write-ups</a>
-<a href="/experience/">Parcours</a>
-<a href="/skills/">Compétences</a>
-<a href="/contact/">Contact</a>
+<a href="{{ '/projects/' | url }}">Projets</a>
+<a href="{{ '/writeups/example-writeup/' | url }}">Write-ups</a>
+<a href="{{ '/experience/' | url }}">Parcours</a>
+<a href="{{ '/skills/' | url }}">Compétences</a>
+<a href="{{ '/contact/' | url }}">Contact</a>
 <button onclick="toggleTheme()">🌗 Thème</button>
 </nav>
 <div class="terminal" id="terminal"></div>
