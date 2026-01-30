@@ -2,7 +2,7 @@
 <html lang="fr" data-theme="dark">
 <head>
   <meta charset="UTF-8" />
-  <title>Write-up XSS</title>
+  <title>Write-up XSS &amp; SQL Injection</title>
   <meta name="viewport" content="width=device-width, initial-scale=1" />
 
   <!-- Fonts -->
@@ -25,17 +25,126 @@
     <button onclick="toggleTheme()">🌗 Thème</button>
   </nav>
 
-  <div class="terminal" id="terminal"></div>
+  <div class="terminal""id="terminal"></div>
 
   <main>
-    <h1>Write-up : Faille XSS</h1>
+    <h1>Write-up : Failles XSS et SQL Injection</h1>
 <h2>Analyses &amp; Recherches</h2>
-<p>Je documente mes apprentissages :</p>
+<p>Je documente ici mes apprentissages autour de la sécurité applicative, dans un cadre <strong>pédagogique, légal et contrôlé</strong>.<br>
+L’objectif est de comprendre comment fonctionnent les vulnérabilités afin de mieux les <strong>identifier</strong>, les <strong>analyser</strong> et surtout les <strong>corriger</strong>.</p>
+<p>Je m’intéresse principalement à :</p>
 <ul>
-<li>vulnérabilités web</li>
-<li>sécurité réseau</li>
-<li>bonnes pratiques de protection</li>
+<li>les vulnérabilités web les plus courantes,</li>
+<li>les mécanismes techniques derrière les attaques,</li>
+<li>les bonnes pratiques de sécurisation côté serveur et client.</li>
 </ul>
+<hr>
+<h2>1. Faille XSS (Cross-Site Scripting)</h2>
+<p>La faille <strong>XSS</strong> permet à un attaquant d’injecter du code JavaScript malveillant dans une page web consultée par d’autres utilisateurs.<br>
+Elle affecte principalement le <strong>front-end</strong>, mais ses causes sont presque toujours liées à une mauvaise validation des entrées côté serveur.</p>
+<h3>Types de XSS</h3>
+<h4>● XSS Reflected</h4>
+<p>Le script injecté est renvoyé immédiatement dans la réponse HTTP (paramètres d’URL, champs de formulaire).</p>
+<h4>● XSS Stored</h4>
+<p>Le code malveillant est stocké (base de données, commentaires, profils) et exécuté à chaque affichage.</p>
+<h4>● XSS DOM-based</h4>
+<p>La vulnérabilité se situe uniquement côté JavaScript, sans interaction directe avec le serveur.</p>
+<h3>Impacts possibles</h3>
+<ul>
+<li>Vol de cookies de session</li>
+<li>Usurpation de compte</li>
+<li>Défaçage de pages</li>
+<li>Redirections malveillantes</li>
+</ul>
+<h3>Prévention</h3>
+<ul>
+<li>Échapper systématiquement les sorties HTML</li>
+<li>Utiliser des frameworks sécurisés</li>
+<li>Mettre en place une Content Security Policy (CSP)</li>
+</ul>
+<hr>
+<h2>2. Faille SQL Injection (SQLi)</h2>
+<p>La <strong>SQL Injection</strong> est une vulnérabilité côté serveur permettant de manipuler des requêtes SQL via des entrées utilisateur mal filtrées.<br>
+Elle peut entraîner la <strong>fuite</strong>, la <strong>modification</strong> ou la <strong>destruction</strong> de données.</p>
+<p>Ci-dessous, une classification des SQLi <strong>du plus simple au plus complexe</strong>.</p>
+<hr>
+<h3>2.1 Injection de base (Simple String Injection)</h3>
+<p><strong>Description</strong><br>
+Forme la plus simple de SQLi. L’attaquant injecte directement du code SQL dans une entrée utilisateur non protégée.</p>
+<p><strong>Principe</strong><br>
+La logique de la requête est modifiée et retourne des résultats inattendus.</p>
+<p><strong>Complexité</strong><br>
+Faible — très fréquente sur les applications mal sécurisées.</p>
+<hr>
+<h3>2.2 Injection UNION-based</h3>
+<p><strong>Description</strong><br>
+Utilisation de l’opérateur <code>UNION</code> pour combiner la requête initiale avec une autre requête malveillante.</p>
+<p><strong>Principe</strong><br>
+Les colonnes doivent correspondre en nombre et en type pour fonctionner.</p>
+<p><strong>Complexité</strong><br>
+Moyenne — nécessite une compréhension du schéma de la base de données.</p>
+<hr>
+<h3>2.3 Injection Error-based</h3>
+<p><strong>Description</strong><br>
+Exploitation des messages d’erreur SQL pour récupérer des informations sensibles.</p>
+<p><strong>Principe</strong><br>
+Les erreurs peuvent révéler les noms de tables, de colonnes ou le type de SGBD.</p>
+<p><strong>Complexité</strong><br>
+Moyenne — dépend de la configuration serveur.</p>
+<hr>
+<h3>2.4 Injection Blind (Boolean-based)</h3>
+<p><strong>Description</strong><br>
+Aucune donnée n’est affichée directement. L’attaquant déduit les informations via des conditions vraies ou fausses.</p>
+<p><strong>Principe</strong><br>
+Analyse des différences de comportement de l’application.</p>
+<p><strong>Complexité</strong><br>
+Élevée — nécessite des tests répétés et une logique conditionnelle.</p>
+<hr>
+<h3>2.5 Injection Blind (Time-based)</h3>
+<p><strong>Description</strong><br>
+Variante du blind SQLi utilisant le temps de réponse comme canal d’information.</p>
+<p><strong>Principe</strong><br>
+Un délai indique si une condition est vraie ou fausse.</p>
+<p><strong>Complexité</strong><br>
+Très élevée — attaques lentes et sensibles à la latence réseau.</p>
+<hr>
+<h3>2.6 Injection Out-of-Band</h3>
+<p><strong>Description</strong><br>
+Exfiltration de données via un canal externe (DNS, HTTP, SMB).</p>
+<p><strong>Principe</strong><br>
+Utilisée lorsque les réponses classiques sont bloquées.</p>
+<p><strong>Complexité</strong><br>
+Très élevée — dépend de l’environnement réseau.</p>
+<hr>
+<h3>2.7 Injection Stacked Queries</h3>
+<p><strong>Description</strong><br>
+Possibilité d’exécuter plusieurs requêtes SQL en une seule injection.</p>
+<p><strong>Principe</strong><br>
+Peut entraîner des actions destructrices si le backend l’autorise.</p>
+<p><strong>Complexité</strong><br>
+Très élevée — souvent bloquée par défaut.</p>
+<hr>
+<h3>2.8 Injection Second-order</h3>
+<p><strong>Description</strong><br>
+L’injection ne se déclenche pas immédiatement mais plus tard via des données stockées.</p>
+<p><strong>Principe</strong><br>
+La charge malveillante est persistante et exploitée dans un autre contexte.</p>
+<p><strong>Complexité</strong><br>
+Extrêmement élevée — nécessite une compréhension globale de l’application.</p>
+<hr>
+<h2>3. Bonnes pratiques de protection</h2>
+<ul>
+<li>Utilisation de <strong>requêtes préparées</strong></li>
+<li>Validation stricte des entrées utilisateur</li>
+<li>Principe du moindre privilège</li>
+<li>Désactivation des erreurs SQL en production</li>
+<li>Mise en place de WAF (Web Application Firewall)</li>
+</ul>
+<hr>
+<h2>Conclusion</h2>
+<p>Les failles <strong>XSS</strong> et <strong>SQL Injection</strong> font partie des vulnérabilités web les plus connues, mais aussi des plus exploitées.<br>
+Les comprendre est indispensable pour tout développeur ou futur professionnel de la cybersécurité.</p>
+<p>Ce write-up s’inscrit dans une démarche d’apprentissage continu et de bonnes pratiques de sécurité applicative.</p>
 
   </main>
 
