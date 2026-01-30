@@ -1032,3 +1032,240 @@ ul li::marker {
   scrollbar-width: thin;
   scrollbar-color: var(--accent) var(--bg);
 }
+/* ======================
+   VARIABLES GLOBALES
+====================== */
+:root {
+  --bg: #0b0f17;
+  --bg-gradient: linear-gradient(135deg, #0b0f17 0%, #1a1f2e 100%);
+  --card: #0f172a;
+  --card-hover: #1e293b;
+  --card-soft: #020617;
+  --text: #e5e7eb;
+  --text-bright: #f8fafc;
+  --muted: #94a3b8;
+  --accent: #22d3ee;
+  --accent-secondary: #6366f1;
+  --border: rgba(34, 211, 238, 0.2);
+  --border-hover: rgba(34, 211, 238, 0.5);
+  --shadow: rgba(0, 0, 0, 0.6);
+  --glow: rgba(34, 211, 238, 0.4);
+
+  --transition-fast: 0.2s ease;
+  --transition-normal: 0.3s ease;
+  --transition-slow: 0.4s ease;
+}
+
+/* ======================
+   RESET
+====================== */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html { scroll-behavior: smooth; }
+
+body {
+  margin: 0 auto;
+  max-width: 1200px;
+  padding: 2.5rem 6rem;
+  font-family: "Inter", system-ui, sans-serif;
+  background: var(--bg-gradient);
+  color: var(--text);
+  line-height: 1.7;
+  min-height: 100vh;
+}
+
+/* ======================
+   LAYOUT
+====================== */
+.container {
+  display: grid;
+  grid-template-columns: 280px 1fr;
+  gap: 3rem;
+}
+
+/* ======================
+   CARDS
+====================== */
+.card {
+  background: var(--card);
+  padding: 3rem;
+  border-radius: 24px;
+  margin-bottom: 3rem;
+  border: 1px solid var(--border);
+  box-shadow: 0 10px 40px var(--shadow);
+  transition: var(--transition-normal);
+}
+
+/* ======================
+   NAV
+====================== */
+nav {
+  display: flex;
+  gap: 1.5rem;
+  justify-content: center;
+  flex-wrap: wrap;
+  padding: 1.5rem 2.5rem;
+  background: var(--card);
+  border-radius: 24px;
+  border: 1px solid var(--border);
+}
+
+/* ======================
+   TYPO
+====================== */
+h1 { font-size: clamp(2rem, 4vw, 3rem); }
+h2 { font-size: clamp(1.5rem, 3vw, 2rem); }
+p, li { font-size: 0.95rem; }
+
+/* ======================
+   📱 MOBILE OPTIMISATION AJOUTÉE
+====================== */
+
+/* Tablettes */
+@media (max-width: 968px) {
+  body { padding: 2rem; }
+  .container {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* Téléphones */
+@media (max-width: 600px) {
+  body {
+    padding: 1.2rem;
+  }
+
+  nav {
+    flex-direction: column;
+    gap: 0.8rem;
+    padding: 1rem;
+  }
+
+  .card {
+    padding: 1.4rem;
+    border-radius: 16px;
+    margin-bottom: 1.8rem;
+  }
+
+  h1 { font-size: 1.8rem; }
+  h2 { font-size: 1.4rem; }
+  h3 { font-size: 1.2rem; }
+
+  p, li {
+    font-size: 0.95rem;
+    line-height: 1.6;
+  }
+
+  .photo-wrapper,
+  .header-photo-wrapper {
+    width: 110px !important;
+    height: 110px !important;
+  }
+
+  .btn {
+    width: 100%;
+    text-align: center;
+    padding: 1rem;
+  }
+}
+
+/* Très petits écrans */
+@media (max-width: 380px) {
+  body { padding: 1rem; }
+  h1 { font-size: 1.6rem; }
+  .card { padding: 1rem; }
+}
+
+/* ======================
+   ✅ AJUSTEMENTS DEMANDÉS
+   - Photo et boutons bien séparés
+   - Mode blanc : 100% textes noirs
+   - Mobile amélioré
+====================== */
+
+/* Séparation visuelle forte entre PHOTO et NAV */
+.header-container {
+  gap: 3rem !important;
+}
+
+.header-photo-card {
+  margin-bottom: 1rem;
+}
+
+nav {
+  margin-top: 1rem;
+}
+
+/* ======================
+   MODE CLAIR ULTRA LISIBLE
+====================== */
+
+[data-theme="light"] * {
+  color: #000000 !important;
+}
+
+[data-theme="light"] a {
+  color: #2563eb !important;
+}
+
+[data-theme="light"] .btn {
+  border-color: #2563eb;
+  color: #2563eb !important;
+}
+
+[data-theme="light"] .btn:hover {
+  background: #2563eb !important;
+  color: #ffffff !important;
+}
+
+/* ======================
+   MOBILE PREMIUM
+====================== */
+
+@media (max-width: 768px) {
+
+  .header-container {
+    gap: 2rem !important;
+  }
+
+  nav {
+    width: 100%;
+    border-radius: 18px;
+  }
+
+  nav a {
+    width: 100%;
+    text-align: center;
+    padding: 0.6rem 0;
+  }
+
+  .header-photo-wrapper {
+    width: 120px !important;
+    height: 120px !important;
+  }
+
+  .photo-wrapper {
+    width: 130px !important;
+    height: 130px !important;
+  }
+
+  .card {
+    padding: 1.6rem;
+  }
+
+  .btn {
+    width: 100%;
+  }
+}
+
+@media (max-width: 420px) {
+  h1 { font-size: 1.6rem; }
+  h2 { font-size: 1.3rem; }
+  .card { padding: 1.2rem; }
+}
