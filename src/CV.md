@@ -4,18 +4,6 @@ title: CV
 ---
 # OUMAR-JULIEN GAUDENS
 
-**RECHERCHE DE STAGE DU 19 JANVIER AU 20 FÉVRIER 2026**
-
----
-
-## COORDONNÉES
-
-📍 11 rue Jean Moulin, 78520 Limay  
-📧 goumarjulien@gmail.com  
-📱 07 67 10 82 22
-
----
-
 ## FORMATION
 
 **Bac Pro CIEL (Cybersécurité, Informatique et Réseaux, Électronique)**  
