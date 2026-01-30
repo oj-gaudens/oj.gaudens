@@ -26,31 +26,31 @@
 }
 
 /* ======================
-   MODE CLAIR – SOBRE ET PROPRE
+   MODE CLAIR – FOND BLANC ET TEXTE NOIR
 ====================== */
 
 [data-theme="light"] {
   --bg: #ffffff;
   --bg-gradient: linear-gradient(
     180deg,
-    #fafafa 0%,
-    #ffffff 100%
+    #ffffff 0%,
+    #fafafa 100%
   );
   
   --card: #ffffff;
-  --card-hover: #f8f9fa;
-  --card-soft: #fafafa;
+  --card-hover: #f9fafb;
+  --card-soft: #f8f9fa;
   
-  --text: #1a1a1a;
+  --text: #000000;
   --text-bright: #000000;
   --muted: #6b7280;
   
-  --accent: #2563eb;
-  --accent-secondary: #1d4ed8;
-  --border: rgba(0, 0, 0, 0.08);
-  --border-hover: rgba(37, 99, 235, 0.2);
-  --shadow: rgba(0, 0, 0, 0.04);
-  --glow: rgba(37, 99, 235, 0.2);
+  --accent: #3b82f6;
+  --accent-secondary: #2563eb;
+  --border: rgba(0, 0, 0, 0.1);
+  --border-hover: rgba(59, 130, 246, 0.3);
+  --shadow: rgba(0, 0, 0, 0.08);
+  --glow: rgba(59, 130, 246, 0.25);
 }
 
 /* ======================
@@ -72,8 +72,8 @@ html {
 
 body {
   margin: 0 auto;
-  max-width: 1300px;
-  padding: 2.5rem 2rem;
+  max-width: 1200px;
+  padding: 2.5rem 6rem;
   font-family: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", system-ui, sans-serif;
   background: var(--bg-gradient);
   color: var(--text);
@@ -115,17 +115,18 @@ body::before {
 }
 
 /* ======================
-   HEADER (Photo + Nav sur la même ligne)
+   HEADER (Photo + Nav dans des bulles SÉPARÉES)
 ====================== */
 
 .header-container {
-  display: grid;
-  grid-template-columns: 280px 1fr;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
   gap: 2rem;
   margin-bottom: 4rem;
-  align-items: center;
 }
 
+/* BULLE 1 : Photo uniquement */
 .header-photo-card {
   background: var(--card);
   padding: 1.5rem;
@@ -138,12 +139,28 @@ body::before {
   transition: 
     transform var(--transition-normal),
     box-shadow var(--transition-normal);
+  width: fit-content;
+}
+
+[data-theme="light"] .header-photo-card {
+  background: #ffffff;
+  box-shadow: 
+    0 8px 30px rgba(0, 0, 0, 0.06),
+    0 2px 8px rgba(0, 0, 0, 0.04);
+  border: 1px solid rgba(0, 0, 0, 0.1);
 }
 
 .header-photo-card:hover {
   transform: translateY(-4px);
   box-shadow: 
     0 20px 60px var(--shadow),
+    0 0 0 1px var(--border-hover);
+}
+
+[data-theme="light"] .header-photo-card:hover {
+  box-shadow: 
+    0 15px 45px rgba(0, 0, 0, 0.1),
+    0 5px 15px rgba(0, 0, 0, 0.05),
     0 0 0 1px var(--border-hover);
 }
 
@@ -190,7 +207,7 @@ body::before {
 .container {
   display: grid;
   grid-template-columns: 280px 1fr;
-  gap: 2.5rem;
+  gap: 3rem;
   align-items: start;
 }
 
@@ -214,10 +231,25 @@ body::before {
     box-shadow var(--transition-normal);
 }
 
+[data-theme="light"] .photo-card {
+  background: #ffffff;
+  box-shadow: 
+    0 8px 30px rgba(0, 0, 0, 0.06),
+    0 2px 8px rgba(0, 0, 0, 0.04);
+  border: 1px solid rgba(0, 0, 0, 0.1);
+}
+
 .photo-card:hover {
   transform: translateY(-4px);
   box-shadow: 
     0 20px 60px var(--shadow),
+    0 0 0 1px var(--border-hover);
+}
+
+[data-theme="light"] .photo-card:hover {
+  box-shadow: 
+    0 15px 45px rgba(0, 0, 0, 0.1),
+    0 5px 15px rgba(0, 0, 0, 0.05),
     0 0 0 1px var(--border-hover);
 }
 
@@ -261,6 +293,7 @@ body::before {
   font-size: 1.25rem;
   margin-bottom: 0.5rem;
   font-weight: 800;
+  color: var(--text-bright);
 }
 
 .photo-card .subtitle {
@@ -284,6 +317,7 @@ body::before {
   margin-bottom: 1rem;
   font-size: 0.85rem;
   font-weight: 600;
+  color: var(--text);
 }
 
 .contact-item svg,
@@ -353,6 +387,7 @@ p {
   font-size: 0.95rem;
   font-weight: 500;
   line-height: 1.7;
+  color: var(--text);
 }
 
 strong, b {
@@ -387,19 +422,16 @@ a:hover {
   50% { text-shadow: 0 0 25px var(--glow), 0 0 50px rgba(34, 211, 238, 0.3); }
 }
 
-/* Mode clair - dégradé subtil */
+/* Mode clair - pas d'effet néon */
 [data-theme="light"] h1,
 [data-theme="light"] h2,
 [data-theme="light"] h3 {
-  background: linear-gradient(135deg, #1a1a1a 0%, var(--accent) 100%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
-  filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.1));
+  text-shadow: none;
+  animation: none;
 }
 
 /* ======================
-   NAVBAR (dans le header)
+   NAVBAR (BULLE 2 : Navigation séparée de la photo)
 ====================== */
 
 nav {
@@ -407,12 +439,22 @@ nav {
   gap: 1.5rem;
   align-items: center;
   flex-wrap: wrap;
-  padding: 1.5rem 2rem;
+  justify-content: center;
+  padding: 1.5rem 2.5rem;
   background: var(--card);
   border-radius: 24px;
   border: 1px solid var(--border);
   backdrop-filter: blur(10px);
   box-shadow: 0 8px 32px var(--shadow);
+  width: fit-content;
+}
+
+[data-theme="light"] nav {
+  background: #ffffff;
+  box-shadow: 
+    0 8px 30px rgba(0, 0, 0, 0.06),
+    0 2px 8px rgba(0, 0, 0, 0.04);
+  border: 1px solid rgba(0, 0, 0, 0.1);
 }
 
 nav a {
@@ -478,11 +520,12 @@ nav a.active::before {
     background var(--transition-normal);
 }
 
-/* Mode clair - cartes plus sobres */
 [data-theme="light"] .card {
+  background: #ffffff;
   box-shadow: 
-    0 4px 20px var(--shadow),
-    0 0 0 1px var(--border);
+    0 8px 30px rgba(0, 0, 0, 0.06),
+    0 2px 8px rgba(0, 0, 0, 0.04);
+  border: 1px solid rgba(0, 0, 0, 0.1);
 }
 
 /* Reflet miroir */
@@ -530,12 +573,23 @@ nav a.active::before {
   background: var(--card-hover);
 }
 
+[data-theme="light"] .card:hover {
+  box-shadow: 
+    0 15px 45px rgba(0, 0, 0, 0.1),
+    0 5px 15px rgba(0, 0, 0, 0.05),
+    0 0 0 1px var(--border-hover);
+}
+
 .card:hover::before {
   opacity: 1;
 }
 
 .card:hover::after {
   opacity: 0.3;
+}
+
+[data-theme="light"] .card:hover::after {
+  opacity: 0.15;
 }
 
 /* Animation d'apparition */
@@ -578,6 +632,7 @@ nav a.active::before {
   font-size: 0.95rem;
   font-weight: 500;
   line-height: 1.7;
+  color: var(--text);
 }
 
 /* ======================
@@ -623,6 +678,12 @@ nav a.active::before {
     0 8px 24px rgba(34, 211, 238, 0.3),
     0 0 40px rgba(34, 211, 238, 0.2);
   transform: translateY(-2px);
+}
+
+[data-theme="light"] .btn:hover {
+  box-shadow: 
+    0 8px 24px rgba(59, 130, 246, 0.3),
+    0 0 40px rgba(59, 130, 246, 0.15);
 }
 
 .btn:hover::before {
@@ -676,11 +737,13 @@ nav a.active::before {
 }
 
 [data-theme="light"] .terminal {
-  background: #fafafa;
-  color: var(--text-bright);
+  background: #f8f9fa;
+  color: #000000;
   box-shadow: 
     inset 0 1px 0 rgba(0, 0, 0, 0.05),
-    0 2px 8px var(--shadow);
+    0 4px 16px rgba(0, 0, 0, 0.05),
+    inset 0 -1px 0 rgba(0, 0, 0, 0.03);
+  border: 1px solid rgba(0, 0, 0, 0.1);
 }
 
 /* ======================
@@ -698,6 +761,7 @@ li {
   font-size: 0.95rem;
   font-weight: 500;
   line-height: 1.7;
+  color: var(--text);
 }
 
 ul li::marker {
@@ -723,11 +787,21 @@ ul li::marker {
   transition: all var(--transition-fast);
 }
 
+[data-theme="light"] .badge {
+  background: rgba(59, 130, 246, 0.08);
+  border: 1px solid rgba(59, 130, 246, 0.2);
+}
+
 .badge:hover {
   background: rgba(34, 211, 238, 0.2);
   border-color: var(--accent);
   transform: translateY(-2px);
   box-shadow: 0 4px 12px rgba(34, 211, 238, 0.2);
+}
+
+[data-theme="light"] .badge:hover {
+  background: rgba(59, 130, 246, 0.15);
+  box-shadow: 0 4px 12px rgba(59, 130, 246, 0.2);
 }
 
 /* ======================
@@ -779,22 +853,12 @@ ul li::marker {
 
 @media (max-width: 1200px) {
   body {
-    padding: 2rem 1.5rem;
-  }
-  
-  .header-container {
-    grid-template-columns: 240px 1fr;
-    gap: 1.5rem;
-  }
-  
-  .header-photo-wrapper {
-    width: 130px;
-    height: 130px;
+    padding: 2rem 4rem;
   }
   
   .container {
     grid-template-columns: 240px 1fr;
-    gap: 2rem;
+    gap: 2.5rem;
   }
   
   .photo-wrapper {
@@ -804,9 +868,8 @@ ul li::marker {
 }
 
 @media (max-width: 968px) {
-  .header-container {
-    grid-template-columns: 1fr;
-    gap: 1.5rem;
+  body {
+    padding: 2rem 2.5rem;
   }
   
   .container {
@@ -827,13 +890,13 @@ ul li::marker {
 
 @media (max-width: 768px) {
   body {
-    padding: 2rem 1rem;
+    padding: 2rem 1.5rem;
   }
   
   nav {
     flex-direction: column;
     gap: 1rem;
-    padding: 1rem;
+    padding: 1rem 1.5rem;
   }
   
   .card {
