@@ -20,7 +20,7 @@ Cela m’a permis de comprendre comment des fichiers peuvent provoquer un déni 
 
 ---
 
-## 🔐 Étude des attaques par force brute (Hydra)
+##  Étude des attaques par force brute (Hydra)
 
 J’ai utilisé Hydra en laboratoire pour comprendre :
 - le fonctionnement des attaques par force brute
@@ -29,7 +29,7 @@ J’ai utilisé Hydra en laboratoire pour comprendre :
 
 ---
 
-## 🌐 Analyse réseau (Wireshark)
+##  Analyse réseau (Wireshark)
 
 Wireshark m’a permis de :
 - voir les paquets réseau
@@ -39,7 +39,7 @@ Wireshark m’a permis de :
 
 ---
 
-## 🧪 Sécurité web
+##  Sécurité web
 
 J’ai étudié :
 - XSS  
@@ -53,7 +53,7 @@ Pour comprendre :
 
 ---
 
-## 🐍 Scripts Python
+##  Scripts Python
 
 J’ai développé :
 - des scripts de chiffrement/déchiffrement  
